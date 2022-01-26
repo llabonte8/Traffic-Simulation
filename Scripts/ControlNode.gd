@@ -1,18 +1,30 @@
-extends Node
+extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
+var inputNodes = []
+var outputNodes = []
+var node
+var pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	
+func addInputNode(n):
+	inputNodes.append(n)
+	
+func addOutputNode(n):
+	outputNodes.append(n)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-var node;
+func setNode(n):
+	node = n
+	pos = n.position
+func getNode():
+	return node
+	
+func getLineCoords():
+	if len(outputNodes) > 0:
+		var outputs = []
+		for n in outputNodes: outputs.append([pos, n.pos])
+		return outputs
+	return null

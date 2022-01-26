@@ -7,3 +7,12 @@ D:\Godot\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.AssemblyInfo.cs
 D:\Godot\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.csproj.CoreCompileInputs.cache
 D:\Godot\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.dll
 D:\Godot\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.pdb
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\bin\Debug\Traffic Simulation.dll
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\bin\Debug\Traffic Simulation.pdb
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.csproj.AssemblyReference.cache
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.AssemblyInfoInputs.cache
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.AssemblyInfo.cs
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.csproj.CoreCompileInputs.cache
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.dll
+C:\Users\lukes\Desktop\Godot\Traffic Simulator\TrafficSim\.mono\temp\obj\Debug\Traffic Simulation.pdb
