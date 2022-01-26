@@ -66,7 +66,7 @@ func Instantiate(position):
 		selectedNode.getNode().texture = HIGHLIGHTED_TEX;
 		
 	#CanvasItem.update, built in
-	update();
+	update()
 	
 func roundToNearest(num, roundto):
 	return round(num / roundto) * roundto

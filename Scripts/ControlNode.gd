@@ -1,5 +1,6 @@
 extends Node2D
 
+onready var curve = Curve2D.new()
 
 var inputNodes = []
 var outputNodes = []
