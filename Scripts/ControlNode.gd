@@ -13,6 +13,9 @@ func _init(parents, creator, pos, tex, scaleFactor):
 	
 func select(): pass 
 func deselect(): pass
+func delete():
+	Parents[0].removeOutputNode(Parents[1])
+	Parents[0].update()
 
 func updatePosition(pos):
 	ICreator.changeControlPosition(position, pos, self, Parents)

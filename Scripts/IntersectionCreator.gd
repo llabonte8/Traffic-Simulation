@@ -38,6 +38,7 @@ func _input(event):
 	elif event is InputEventKey and event.scancode == KEY_BACKSPACE:
 		if selectedNode:
 			selectedNode.delete()
+			selectedNode = null
 	
 func handleMouseClick(position):
 	#There is nothing at our click position, spawn a new node
@@ -51,6 +52,7 @@ func handleMouseClick(position):
 			
 		selectedNode = globalSpacialHashMap[position]
 		selectedNode.select()
+		selectedNode.update()
 	elif globalSpacialHashMap[position] is ControlNodeDictElem:
 		if selectedNode: selectedNode.deselect()
 		selectedNode = globalSpacialHashMap[position].getTopNode()
@@ -88,6 +90,19 @@ func getControlPosition(parents):
 			if elem.nodes.has(parents):
 				return elem.nodes[parents].global_position
 	return null
+	
+func removeControlPoint(parents):
+	for elem in globalSpacialHashMap.values():
+		if elem is ControlNodeDictElem:
+			if elem.nodes.has(parents):
+				var obj = elem.nodes[parents]
+				elem.removeNode(obj)
+				obj.queue_free()
+				
+				if len(elem.nodes) == 0: 
+					var ind = globalSpacialHashMap.values().find(elem)
+					globalSpacialHashMap.erase(globalSpacialHashMap.keys()[ind])
+				return
 	
 func changeControlPosition(pos, newpos, node, parents):
 	if globalSpacialHashMap.has(pos) and globalSpacialHashMap[pos] is ControlNodeDictElem:

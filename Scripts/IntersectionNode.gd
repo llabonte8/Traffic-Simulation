@@ -1,6 +1,7 @@
 extends Sprite
 
 onready var ControlNode = load("res://Scripts/ControlNode.gd")
+onready var TriangleTexture = load("res://Images/triangle.png")
 
 var pos 
 var htex
@@ -27,7 +28,7 @@ func addOutputNode(n):
 	outputNodes.append(n)
 	
 	var ctrlGlobalPos = ICreator.getGridPosition(Vector2((global_position.x + n.global_position.x) / 2, (global_position.y + n.global_position.y) / 2))
-	var ctrlPoint = ControlNode.new([self, n], ICreator, ctrlGlobalPos, htex, 0.03)
+	var ctrlPoint = ControlNode.new([self, n], ICreator, ctrlGlobalPos, TriangleTexture, .03)
 	ICreator.addControlNode(ctrlPoint, [self, n], ctrlGlobalPos)
 	ICreator.add_child(ctrlPoint)
 	
@@ -53,12 +54,24 @@ func getBezierPoints(p0, p1, p2, tstep):
 	
 func delete():
 	for o in outputNodes:
+		if not o: continue
 		o.removeInputNode(self)
+		removeOutputNode(o)
 	for i in inputNodes:
+		if not i: continue
 		i.removeOutputNode(self)
+		i.update()
+		
+	assert(ICreator.globalSpacialHashMap.has(position))
+	ICreator.globalSpacialHashMap.erase(position)
+	queue_free()
 		
 func removeInputNode(n):
+	inputNodes.erase(n)
 	
+func removeOutputNode(n):
+	outputNodes.erase(n)
+	ICreator.removeControlPoint([self, n])
 	
 func _draw():
 	for n in outputNodes:
