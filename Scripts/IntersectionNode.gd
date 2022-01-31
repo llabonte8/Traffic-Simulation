@@ -1,7 +1,7 @@
 extends Sprite
 
 onready var ControlNode = load("res://Scripts/ControlNode.gd")
-onready var TriangleTexture = load("res://Images/triangle.png")
+
 
 var pos 
 var htex
@@ -22,15 +22,18 @@ func _init(position, scalingFactor, creator, highlightedTexture, unhighlightedTe
 	self.texture = htex
 	self.position = pos 
 	self.scale = Vector2(scaleFactor, scaleFactor)
+	
+func getPos(): return global_position
 
 	
 func addOutputNode(n):
 	outputNodes.append(n)
 	
 	var ctrlGlobalPos = ICreator.getGridPosition(Vector2((global_position.x + n.global_position.x) / 2, (global_position.y + n.global_position.y) / 2))
-	var ctrlPoint = ControlNode.new([self, n], ICreator, ctrlGlobalPos, TriangleTexture, .03)
+	var ctrlPoint = ControlNode.new([self, n], ICreator, ctrlGlobalPos, htex, .03)
 	ICreator.addControlNode(ctrlPoint, [self, n], ctrlGlobalPos)
 	ICreator.add_child(ctrlPoint)
+	ctrlPoint.updatePosition(ctrlGlobalPos)
 	
 func addInputNode(n):
 	inputNodes.append(n)

@@ -52,7 +52,7 @@ func handleMouseClick(position):
 			
 		selectedNode = globalSpacialHashMap[position]
 		selectedNode.select()
-		selectedNode.update()
+
 	elif globalSpacialHashMap[position] is ControlNodeDictElem:
 		if selectedNode: selectedNode.deselect()
 		selectedNode = globalSpacialHashMap[position].getTopNode()
