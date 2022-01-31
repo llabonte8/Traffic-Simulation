@@ -1,106 +1,96 @@
 extends Node2D
 
 var GRID_SPACING = 25
-var DRAGGING_CTRL = false
-var CONTROL_POINT_INDEX = -1
-var ORIG_CTRL_POINT
+var MOUSE_HOLD = false
 
 onready var HIGHLIGHTED_TEX = load("res://Images/Highlighted.png")
 onready var UNHIGHLIGHTED_TEX = load("res://Images/Unhighlighted.png")
-onready var ControlNodes = load("res://Scripts/ControlNode.gd")
+onready var IntersectionNode = load("res://Scripts/IntersectionNode.gd")
+onready var ControlNodeDictElem = load('res://Scripts/ControlNodeDictElem.gd')
+onready var ControlNode = load('res://Scripts/ControlNode.gd')
 
+#  {Vector2(x, y), class}
+var globalSpacialHashMap = {}
 var selectedNode = null
-
-var nodeDict = {}
-var controlPointsDict = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-func _process(delta):
-	if DRAGGING_CTRL:
-		selectedNode.curveControlPoint.position = getGridPosition(get_global_mouse_position())
-		selectedNode.setHalfwayPoint(getGridPosition(get_global_mouse_position()), CONTROL_POINT_INDEX)
-		update() 
-
+	
 func _input(event):
-	if event is InputEventMouseButton && event.is_pressed() && event.button_index == BUTTON_LEFT:
-		HandleLeftClick(get_global_mouse_position())
-		
-	if event is InputEventKey && event.scancode == KEY_ESCAPE:
-		if(selectedNode): selectedNode.getNode().texture = UNHIGHLIGHTED_TEX;
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:	
+			handleMouseClick(getGridPosition(get_global_mouse_position()))
+			MOUSE_HOLD = true
+		elif event.button_index == BUTTON_LEFT and !event.pressed:
+			MOUSE_HOLD = false
+			
+	elif event is InputEventMouseMotion:
+		if MOUSE_HOLD:
+			if selectedNode and selectedNode is ControlNode:
+				if not globalSpacialHashMap.has(getGridPosition(get_global_mouse_position())):
+					selectedNode.updatePosition(getGridPosition(get_global_mouse_position()))
+					
+	elif event is InputEventKey and event.scancode == KEY_ESCAPE:
+		if selectedNode: selectedNode.deselect()
 		selectedNode = null
-
-	if event is InputEventMouseButton && event.is_pressed() == false && event.button_index == BUTTON_LEFT && DRAGGING_CTRL:
-		if selectedNode:
-			selectedNode.setHalfwayPoint(getGridPosition(get_global_mouse_position()), CONTROL_POINT_INDEX)
-			controlPointsDict[getGridPosition(get_global_mouse_position())] = [selectedNode, CONTROL_POINT_INDEX]
-			controlPointsDict.erase(ORIG_CTRL_POINT)
-			selectedNode = null
-			update()
-		DRAGGING_CTRL = false
-
-
-func HandleLeftClick(position):
-	var gridPosition = getGridPosition(position)
-
-	if(!nodeDict.has(gridPosition)):
-		if controlPointsDict.has(gridPosition):
-			if(selectedNode): selectedNode.getNode().texture = UNHIGHLIGHTED_TEX;
-			selectedNode = controlPointsDict[gridPosition][0]
-			CONTROL_POINT_INDEX = controlPointsDict[gridPosition][1]
-			DRAGGING_CTRL = true
-			ORIG_CTRL_POINT = gridPosition
-
-		else: spawnNewNode(gridPosition)
-
-	else:
-		switchFocusToNode(gridPosition)
 		
-	#CanvasItem.update, built in
-	update()
-
-func spawnNewNode(gridPosition):
-	var node = Sprite.new()
-	var control = ControlNodes.new()
-
-	node.texture = HIGHLIGHTED_TEX
-	node.position = gridPosition
-	node.scale = Vector2(.05, .05)
-
-	control.setNode(node)
-	control.setIntersectionCreator(self)
-
-	if selectedNode:
-		selectedNode.addOutputNode(control)
-		control.addInputNode(selectedNode)
-		selectedNode.getNode().texture = UNHIGHLIGHTED_TEX;
-		selectedNode = control;
-	else: selectedNode = control
-
-	add_child(node)
-	nodeDict[gridPosition] = control
+	elif event is InputEventKey and event.scancode == KEY_BACKSPACE:
+		if selectedNode:
+			selectedNode.delete()
+	
+func handleMouseClick(position):
+	#There is nothing at our click position, spawn a new node
+	if not globalSpacialHashMap.has(position):
+		spawnIntersectionNode(position)
+	elif globalSpacialHashMap[position] is IntersectionNode:
+		if selectedNode and selectedNode is IntersectionNode:
+			selectedNode.deselect()
+			selectedNode.addOutputNode(globalSpacialHashMap[position])
+			globalSpacialHashMap[position].addInputNode(selectedNode)
+			
+		selectedNode = globalSpacialHashMap[position]
+		selectedNode.select()
+	elif globalSpacialHashMap[position] is ControlNodeDictElem:
+		if selectedNode: selectedNode.deselect()
+		selectedNode = globalSpacialHashMap[position].getTopNode()
 	
 
-func switchFocusToNode(gridPosition):
-	if selectedNode: 
-		selectedNode.addOutputNode(nodeDict[gridPosition])
-		nodeDict[gridPosition].addInputNode(selectedNode)
-		selectedNode.getNode().texture = UNHIGHLIGHTED_TEX;
-		
-	selectedNode = nodeDict[gridPosition];
-	selectedNode.getNode().texture = HIGHLIGHTED_TEX;
+func spawnIntersectionNode(position):
+	var newnode = IntersectionNode.new(position, 0.05, self, HIGHLIGHTED_TEX, UNHIGHLIGHTED_TEX)
+	add_child(newnode)
+	globalSpacialHashMap[position] = newnode 
+	
+	if selectedNode and selectedNode is IntersectionNode: 
+		selectedNode.addOutputNode(newnode)
+		newnode.addInputNode(selectedNode)
+		selectedNode.deselect()
+	selectedNode = newnode
 
 func getGridPosition(position):
 	return Vector2(roundToNearest(position.x, GRID_SPACING), roundToNearest(position.y, GRID_SPACING));
-
 func roundToNearest(num, roundto):
 	return round(num / roundto) * roundto
 	
+		
+func addControlNode(node, parents, position):
+	if globalSpacialHashMap.has(position):
+		if globalSpacialHashMap[position] is ControlNodeDictElem:
+			globalSpacialHashMap[position].addNode(parents, node)
+	else:
+		var tmpElm = ControlNodeDictElem.new()
+		tmpElm.addNode(parents, node)
+		globalSpacialHashMap[position] = tmpElm
+		
+func getControlPosition(parents):
+	for elem in globalSpacialHashMap.values():
+		if elem is ControlNodeDictElem:
+			if elem.nodes.has(parents):
+				return elem.nodes[parents].global_position
+	return null
 	
-func _draw():
-	for n in nodeDict.values():
-		if len(n.outputNodes) > 0:
-			draw_polyline(n.constructCurve().get_baked_points(), Color.red, 2.0)
+func changeControlPosition(pos, newpos, node, parents):
+	if globalSpacialHashMap.has(pos) and globalSpacialHashMap[pos] is ControlNodeDictElem:
+		globalSpacialHashMap[pos].removeNode(node) 
+		if(len(globalSpacialHashMap[pos].nodes) == 0): globalSpacialHashMap.erase(pos)
+		addControlNode(node, parents, newpos)
