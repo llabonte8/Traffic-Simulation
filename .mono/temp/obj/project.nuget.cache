@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UVcIfdUyLzXtdFymIZP8+Np/2jOLYbosAl0Z4GGAjARO0h2JUW2cITUr2b0FD2KKQ88qnW1oY8Cbo1kt4WtUTg==",
+  "dgSpecHash": "lfE7GtzhbCOzzOD2mg5qQeU4E/vFdaO9UEE3Vd7gAhCuhYiBiTzM9Ia0gvQ47UTTzO+To5gwlSZN3WAjxv2XKQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lukes\\Desktop\\Godot\\Traffic Simulator\\TrafficSim\\Traffic Simulation.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\lukes\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.2\\microsoft.netframework.referenceassemblies.1.0.2.nupkg.sha512",
-    "C:\\Users\\lukes\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net472\\1.0.2\\microsoft.netframework.referenceassemblies.net472.1.0.2.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Godot\\TrafficSim\\Traffic Simulation.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
