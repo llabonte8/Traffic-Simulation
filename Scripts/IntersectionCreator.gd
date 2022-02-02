@@ -75,9 +75,11 @@ func _input(event):
 		lineedit.max_length = 256;
 		lineedit.placeholder_text = "File Name..."
 		lineedit.rect_min_size = Vector2(200, 30)
+		lineedit.add_font_override("font", load('res://Images/mainfont.tres'))
 		lineedit.rect_position = Vector2(get_viewport_rect().size.x / 2 - (lineedit.rect_min_size.x / 2), 10)
 		get_node("../CanvasLayer").add_child(lineedit)
 		lineedit.editable = false
+		lineedit.caret_blink = true;
 		lineedit.grab_focus()
 		SAVING = true
 

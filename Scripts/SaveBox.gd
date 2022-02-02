@@ -3,20 +3,20 @@ extends LineEdit
 var parent
 
 func _init(par):
-    parent = par
+	parent = par
 
 func _ready():
-    connect("text_entered", self, "_on_text_submitted")
+	connect("text_entered", self, "_on_text_submitted")
 
 func _process(_delta):
-    editable = true
+	editable = true
 
 func _on_text_submitted(text):
-    parent.save(text)
-    parent.SAVING = false 
-    queue_free()
+	parent.save(text)
+	parent.SAVING = false 
+	queue_free()
 
 func _input(event):
-    if event is InputEventKey and event.scancode == KEY_ESCAPE:
-        parent.SAVING = false 
-        queue_free()
+	if event is InputEventKey and event.scancode == KEY_ESCAPE:
+		parent.SAVING = false 
+		queue_free()
