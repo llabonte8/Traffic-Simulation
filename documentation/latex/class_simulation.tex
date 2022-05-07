@@ -1,0 +1,153 @@
+\hypertarget{class_simulation}{}\doxysection{Simulation Class Reference}
+\label{class_simulation}\index{Simulation@{Simulation}}
+
+
+Manager class for all simulations.  
+
+
+Inheritance diagram for Simulation\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_simulation}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_simulation_a1e2b35dd29d9cf472bf706063b0c0c93}{\+\_\+\+Ready}} ()
+\item 
+void \mbox{\hyperlink{class_simulation_ad27279fbbcb016618617926ff990e8df}{Set\+CPT}} (double val)
+\item 
+void \mbox{\hyperlink{class_simulation_a77376f21f3d3f2e3da33a0ec7e09aea0}{Set\+TPS}} (double val)
+\item 
+override void \mbox{\hyperlink{class_simulation_ad21d19bf43fc79d74e86acfe2b279ede}{\+\_\+\+Process}} (float delta)
+\item 
+void \mbox{\hyperlink{class_simulation_a29784d945b71e1c7f9bb779da4ad3bc3}{Initialize}} (Node2D \mbox{\hyperlink{class_simulation_ab13a5b4bc9b3997ea6459b8f83c80e4d}{parent}}, Texture car\+Sprite)
+\item 
+void \mbox{\hyperlink{class_simulation_aebeea2bac85a54c622666db0a2f97bf2}{Add\+Node}} (Vector2 pos, bool input, bool output)
+\item 
+void \mbox{\hyperlink{class_simulation_a87b2a9a2a09be5c9944af05d07c3ac24}{Add\+Connections}} (Vector2 node\+Pos, Vector2 connection\+Pos, Vector2 midpos)
+\item 
+void \mbox{\hyperlink{class_simulation_a5aa98a387313db4bd295dca343d689d8}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_simulation_ab74a95d1cca15c0ed767cfa6d55b797f}{Switch}} ()
+\item 
+void \mbox{\hyperlink{class_simulation_a6317d2530ee43e6606ed748cd4b9aec4}{Stop}} ()
+\item 
+void \mbox{\hyperlink{class_simulation_ae69c6163a26752c01a787a13fd9d2888}{Add\+Car}} (List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} $>$ dirs)
+\item 
+void \mbox{\hyperlink{class_simulation_a8444714f4eab8f22b0d0ee949b589672}{Add\+To\+Node\+Queue}} (\mbox{\hyperlink{class_car}{Car}} c, \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} n)
+\item 
+void \mbox{\hyperlink{class_simulation_a9fc184dacb5434160cf3ab8f63666749}{Update\+Node\+Color}} (Vector2 pos, float t)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Node2D \mbox{\hyperlink{class_simulation_ab13a5b4bc9b3997ea6459b8f83c80e4d}{parent}}
+\item 
+\mbox{\hyperlink{class_sim_implementations}{Sim\+Implementations}} \mbox{\hyperlink{class_simulation_a07ceb6521dd67cce8e47e48427d9856f}{impl}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manager class for all simulations. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_simulation_ad21d19bf43fc79d74e86acfe2b279ede}\label{class_simulation_ad21d19bf43fc79d74e86acfe2b279ede}} 
+\index{Simulation@{Simulation}!\_Process@{\_Process}}
+\index{\_Process@{\_Process}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{\_Process()}{\_Process()}}
+{\footnotesize\ttfamily override void Simulation.\+\_\+\+Process (\begin{DoxyParamCaption}\item[{float}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to run code on every frame. Required by Godot engine. \mbox{\Hypertarget{class_simulation_a1e2b35dd29d9cf472bf706063b0c0c93}\label{class_simulation_a1e2b35dd29d9cf472bf706063b0c0c93}} 
+\index{Simulation@{Simulation}!\_Ready@{\_Ready}}
+\index{\_Ready@{\_Ready}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{\_Ready()}{\_Ready()}}
+{\footnotesize\ttfamily override void Simulation.\+\_\+\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function that is called when node enters scene tree. Required by Godot engine. \mbox{\Hypertarget{class_simulation_ae69c6163a26752c01a787a13fd9d2888}\label{class_simulation_ae69c6163a26752c01a787a13fd9d2888}} 
+\index{Simulation@{Simulation}!AddCar@{AddCar}}
+\index{AddCar@{AddCar}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{AddCar()}{AddCar()}}
+{\footnotesize\ttfamily void Simulation.\+Add\+Car (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} $>$}]{dirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to add a car to the intersection. \mbox{\Hypertarget{class_simulation_a87b2a9a2a09be5c9944af05d07c3ac24}\label{class_simulation_a87b2a9a2a09be5c9944af05d07c3ac24}} 
+\index{Simulation@{Simulation}!AddConnections@{AddConnections}}
+\index{AddConnections@{AddConnections}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{AddConnections()}{AddConnections()}}
+{\footnotesize\ttfamily void Simulation.\+Add\+Connections (\begin{DoxyParamCaption}\item[{Vector2}]{node\+Pos,  }\item[{Vector2}]{connection\+Pos,  }\item[{Vector2}]{midpos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to add a connection to the intersection. \mbox{\Hypertarget{class_simulation_aebeea2bac85a54c622666db0a2f97bf2}\label{class_simulation_aebeea2bac85a54c622666db0a2f97bf2}} 
+\index{Simulation@{Simulation}!AddNode@{AddNode}}
+\index{AddNode@{AddNode}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{AddNode()}{AddNode()}}
+{\footnotesize\ttfamily void Simulation.\+Add\+Node (\begin{DoxyParamCaption}\item[{Vector2}]{pos,  }\item[{bool}]{input,  }\item[{bool}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to add a node to the intersection. \mbox{\Hypertarget{class_simulation_a8444714f4eab8f22b0d0ee949b589672}\label{class_simulation_a8444714f4eab8f22b0d0ee949b589672}} 
+\index{Simulation@{Simulation}!AddToNodeQueue@{AddToNodeQueue}}
+\index{AddToNodeQueue@{AddToNodeQueue}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{AddToNodeQueue()}{AddToNodeQueue()}}
+{\footnotesize\ttfamily void Simulation.\+Add\+To\+Node\+Queue (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_car}{Car}}}]{c,  }\item[{\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to add a car to the queue of some simulation node. \mbox{\Hypertarget{class_simulation_a29784d945b71e1c7f9bb779da4ad3bc3}\label{class_simulation_a29784d945b71e1c7f9bb779da4ad3bc3}} 
+\index{Simulation@{Simulation}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Simulation.\+Initialize (\begin{DoxyParamCaption}\item[{Node2D}]{parent,  }\item[{Texture}]{car\+Sprite }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to initialize class with Godot node parent and the texture used for cars. \mbox{\Hypertarget{class_simulation_ad27279fbbcb016618617926ff990e8df}\label{class_simulation_ad27279fbbcb016618617926ff990e8df}} 
+\index{Simulation@{Simulation}!SetCPT@{SetCPT}}
+\index{SetCPT@{SetCPT}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{SetCPT()}{SetCPT()}}
+{\footnotesize\ttfamily void Simulation.\+Set\+CPT (\begin{DoxyParamCaption}\item[{double}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to set cars per tick. \mbox{\Hypertarget{class_simulation_a77376f21f3d3f2e3da33a0ec7e09aea0}\label{class_simulation_a77376f21f3d3f2e3da33a0ec7e09aea0}} 
+\index{Simulation@{Simulation}!SetTPS@{SetTPS}}
+\index{SetTPS@{SetTPS}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{SetTPS()}{SetTPS()}}
+{\footnotesize\ttfamily void Simulation.\+Set\+TPS (\begin{DoxyParamCaption}\item[{double}]{val }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to set ticks per second. \mbox{\Hypertarget{class_simulation_a5aa98a387313db4bd295dca343d689d8}\label{class_simulation_a5aa98a387313db4bd295dca343d689d8}} 
+\index{Simulation@{Simulation}!Start@{Start}}
+\index{Start@{Start}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Simulation.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to initialize simulation details \mbox{\Hypertarget{class_simulation_a6317d2530ee43e6606ed748cd4b9aec4}\label{class_simulation_a6317d2530ee43e6606ed748cd4b9aec4}} 
+\index{Simulation@{Simulation}!Stop@{Stop}}
+\index{Stop@{Stop}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Stop()}{Stop()}}
+{\footnotesize\ttfamily void Simulation.\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to stop simulation. \mbox{\Hypertarget{class_simulation_ab74a95d1cca15c0ed767cfa6d55b797f}\label{class_simulation_ab74a95d1cca15c0ed767cfa6d55b797f}} 
+\index{Simulation@{Simulation}!Switch@{Switch}}
+\index{Switch@{Switch}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{Switch()}{Switch()}}
+{\footnotesize\ttfamily void Simulation.\+Switch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to switch from Monte Carlo to Cellular Automata or vice versa. \mbox{\Hypertarget{class_simulation_a9fc184dacb5434160cf3ab8f63666749}\label{class_simulation_a9fc184dacb5434160cf3ab8f63666749}} 
+\index{Simulation@{Simulation}!UpdateNodeColor@{UpdateNodeColor}}
+\index{UpdateNodeColor@{UpdateNodeColor}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{UpdateNodeColor()}{UpdateNodeColor()}}
+{\footnotesize\ttfamily void Simulation.\+Update\+Node\+Color (\begin{DoxyParamCaption}\item[{Vector2}]{pos,  }\item[{float}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to change color of nodes to show congestion. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_simulation_a07ceb6521dd67cce8e47e48427d9856f}\label{class_simulation_a07ceb6521dd67cce8e47e48427d9856f}} 
+\index{Simulation@{Simulation}!impl@{impl}}
+\index{impl@{impl}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{impl}{impl}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sim_implementations}{Sim\+Implementations}} Simulation.\+impl}
+
+Instance of \mbox{\hyperlink{class_simulation}{Simulation}} class. \mbox{\Hypertarget{class_simulation_ab13a5b4bc9b3997ea6459b8f83c80e4d}\label{class_simulation_ab13a5b4bc9b3997ea6459b8f83c80e4d}} 
+\index{Simulation@{Simulation}!parent@{parent}}
+\index{parent@{parent}!Simulation@{Simulation}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily Node2D Simulation.\+parent}
+
+Parent node (Not a simulation node, this is a Godot Engine class). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Simulation\+Scripts/Simulation.\+cs\end{DoxyCompactItemize}

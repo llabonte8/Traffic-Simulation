@@ -1,0 +1,138 @@
+\hypertarget{class_sim_implementations}{}\doxysection{Sim\+Implementations Class Reference}
+\label{class_sim_implementations}\index{SimImplementations@{SimImplementations}}
+
+
+\mbox{\hyperlink{class_simulation}{Simulation}} implementation.  
+
+
+Inheritance diagram for Sim\+Implementations\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sim_implementations}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}}
+\begin{DoxyCompactList}\small\item\em Class to represent connections between nodes. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}
+\begin{DoxyCompactList}\small\item\em Class to represent nodes in the intersection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a2bd9e00623d0ba7eb8ce774784dc2f70}{Initialize}} (\mbox{\hyperlink{class_simulation}{Simulation}} s, double cps)
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a6b5630cf3c34c24c17327377d1b115d4}{MCSStep}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a18a3f700fcebe178d7c4e4caf8d21650}{CStep}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a44862c946c80281113d64ff8be05f7f4}{Clear}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a94b83a45a3fc68e2e1ab39a252860b66}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a20b3b39cc2386581a660e81ada2ba2a2}{Populate\+Child\+Lookup}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a9608c94bbfebef71757c8e1cd4ee96ae}{Generate\+Directions}} ()
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a5df04f72accaed097a1dc50309155695}{AddN}} (Vector2 position, bool input, bool output)
+\item 
+void \mbox{\hyperlink{class_sim_implementations_a2e3972d2a0b79f5cc2e4ac4c609219e4}{Add\+Conn}} (Vector2 from, Vector2 mid, Vector2 to)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}} $>$ \mbox{\hyperlink{class_sim_implementations_a20283131b5f6f66948ea92ab498946a9}{nodes}} = new List$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}$>$()
+\item 
+Dictionary$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}, int $>$ \mbox{\hyperlink{class_sim_implementations_a9380b45b5fe6d7f8a6f840ebe366bc90}{Num\+Children\+Lookup}} = new Dictionary$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}, int$>$()
+\item 
+double \mbox{\hyperlink{class_sim_implementations_a0b1f0bb1df043952815e4fe6625b3bdc}{CARS\+\_\+\+PER\+\_\+\+TICK}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_simulation}{Simulation}} implementation. 
+
+Class to implement the simulations. Instanced by the \mbox{\hyperlink{class_simulation}{Simulation}} class, which acts as a manager. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sim_implementations_a2e3972d2a0b79f5cc2e4ac4c609219e4}\label{class_sim_implementations_a2e3972d2a0b79f5cc2e4ac4c609219e4}} 
+\index{SimImplementations@{SimImplementations}!AddConn@{AddConn}}
+\index{AddConn@{AddConn}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{AddConn()}{AddConn()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Add\+Conn (\begin{DoxyParamCaption}\item[{Vector2}]{from,  }\item[{Vector2}]{mid,  }\item[{Vector2}]{to }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to add a connection to the current intersection. \mbox{\Hypertarget{class_sim_implementations_a5df04f72accaed097a1dc50309155695}\label{class_sim_implementations_a5df04f72accaed097a1dc50309155695}} 
+\index{SimImplementations@{SimImplementations}!AddN@{AddN}}
+\index{AddN@{AddN}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{AddN()}{AddN()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+AddN (\begin{DoxyParamCaption}\item[{Vector2}]{position,  }\item[{bool}]{input,  }\item[{bool}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to add a node to the current intersection. \mbox{\Hypertarget{class_sim_implementations_a44862c946c80281113d64ff8be05f7f4}\label{class_sim_implementations_a44862c946c80281113d64ff8be05f7f4}} 
+\index{SimImplementations@{SimImplementations}!Clear@{Clear}}
+\index{Clear@{Clear}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to clear out the variables that holds nodes, inputs, etc. Should be called if the intersection changes. \mbox{\Hypertarget{class_sim_implementations_a18a3f700fcebe178d7c4e4caf8d21650}\label{class_sim_implementations_a18a3f700fcebe178d7c4e4caf8d21650}} 
+\index{SimImplementations@{SimImplementations}!CStep@{CStep}}
+\index{CStep@{CStep}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{CStep()}{CStep()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+CStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to execute one simulation timestep for the Cellular Automata timestep. \mbox{\Hypertarget{class_sim_implementations_a9608c94bbfebef71757c8e1cd4ee96ae}\label{class_sim_implementations_a9608c94bbfebef71757c8e1cd4ee96ae}} 
+\index{SimImplementations@{SimImplementations}!GenerateDirections@{GenerateDirections}}
+\index{GenerateDirections@{GenerateDirections}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{GenerateDirections()}{GenerateDirections()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Generate\+Directions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to precompute all possible paths for fast lookup. \mbox{\Hypertarget{class_sim_implementations_a2bd9e00623d0ba7eb8ce774784dc2f70}\label{class_sim_implementations_a2bd9e00623d0ba7eb8ce774784dc2f70}} 
+\index{SimImplementations@{SimImplementations}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Initialize (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_simulation}{Simulation}}}]{s,  }\item[{double}]{cps }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to initialize this class with the parent and starting cars per tick. \mbox{\Hypertarget{class_sim_implementations_a6b5630cf3c34c24c17327377d1b115d4}\label{class_sim_implementations_a6b5630cf3c34c24c17327377d1b115d4}} 
+\index{SimImplementations@{SimImplementations}!MCSStep@{MCSStep}}
+\index{MCSStep@{MCSStep}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{MCSStep()}{MCSStep()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+MCSStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to execute one simulation timestep for the Monte Carlo simulation. \mbox{\Hypertarget{class_sim_implementations_a20b3b39cc2386581a660e81ada2ba2a2}\label{class_sim_implementations_a20b3b39cc2386581a660e81ada2ba2a2}} 
+\index{SimImplementations@{SimImplementations}!PopulateChildLookup@{PopulateChildLookup}}
+\index{PopulateChildLookup@{PopulateChildLookup}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{PopulateChildLookup()}{PopulateChildLookup()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Populate\+Child\+Lookup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to fill the child lookup list. \mbox{\Hypertarget{class_sim_implementations_a94b83a45a3fc68e2e1ab39a252860b66}\label{class_sim_implementations_a94b83a45a3fc68e2e1ab39a252860b66}} 
+\index{SimImplementations@{SimImplementations}!Start@{Start}}
+\index{Start@{Start}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily void Sim\+Implementations.\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function that should be called before simulation is run. Precomputes directions and initialized child lookup. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sim_implementations_a0b1f0bb1df043952815e4fe6625b3bdc}\label{class_sim_implementations_a0b1f0bb1df043952815e4fe6625b3bdc}} 
+\index{SimImplementations@{SimImplementations}!CARS\_PER\_TICK@{CARS\_PER\_TICK}}
+\index{CARS\_PER\_TICK@{CARS\_PER\_TICK}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{CARS\_PER\_TICK}{CARS\_PER\_TICK}}
+{\footnotesize\ttfamily double Sim\+Implementations.\+CARS\+\_\+\+PER\+\_\+\+TICK = 0}
+
+Variable controlling how many cars enter the system per timestep. \mbox{\Hypertarget{class_sim_implementations_a20283131b5f6f66948ea92ab498946a9}\label{class_sim_implementations_a20283131b5f6f66948ea92ab498946a9}} 
+\index{SimImplementations@{SimImplementations}!nodes@{nodes}}
+\index{nodes@{nodes}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{nodes}{nodes}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}$>$ Sim\+Implementations.\+nodes = new List$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}$>$()}
+
+List of nodes. This is the datastructure that holds the intersection. \mbox{\Hypertarget{class_sim_implementations_a9380b45b5fe6d7f8a6f840ebe366bc90}\label{class_sim_implementations_a9380b45b5fe6d7f8a6f840ebe366bc90}} 
+\index{SimImplementations@{SimImplementations}!NumChildrenLookup@{NumChildrenLookup}}
+\index{NumChildrenLookup@{NumChildrenLookup}!SimImplementations@{SimImplementations}}
+\doxysubsubsection{\texorpdfstring{NumChildrenLookup}{NumChildrenLookup}}
+{\footnotesize\ttfamily Dictionary$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}, int$>$ Sim\+Implementations.\+Num\+Children\+Lookup = new Dictionary$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}, int$>$()}
+
+Number of children for each node, makes some computations easier. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Simulation\+Scripts/\mbox{\hyperlink{_sim_implementations_8cs}{Sim\+Implementations.\+cs}}\end{DoxyCompactItemize}

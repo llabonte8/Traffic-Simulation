@@ -1,0 +1,108 @@
+\hypertarget{class_car}{}\doxysection{Car Class Reference}
+\label{class_car}\index{Car@{Car}}
+
+
+Class to represent Cars in intersection.  
+
+
+Inheritance diagram for Car\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_car}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_car_ade4fe4eabf2dc4f9d7493abef5fa81e1}{Initialize}} (List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} $>$ n, \mbox{\hyperlink{class_simulation}{Simulation}} s, bool running\+Monte\+Carlo)
+\item 
+List$<$ Vector2 $>$ \mbox{\hyperlink{class_car_a99efaf6bd4b1d4283d3fb4609e7011b7}{Generate\+Directions}} (Vector2 p0, Vector2 p1, Vector2 p2, float tstep)
+\item 
+void \mbox{\hyperlink{class_car_a508ae2e76c1d9a75fe433ca4c65e2c52}{Start\+Next\+Checkpoint}} ()
+\item 
+override void \mbox{\hyperlink{class_car_aa96eb44b0f5443ac980260abd8b89f33}{\+\_\+\+Process}} (float delta)
+\item 
+void \mbox{\hyperlink{class_car_a49373911337b498e937aa9b4c7c53e6c}{Move\+Monte\+Carlo}} (float delta)
+\item 
+void \mbox{\hyperlink{class_car_a6522f7e2b3b6d989ea2a9d77b977592b}{Move\+Cellular}} (float delta)
+\item 
+float \mbox{\hyperlink{class_car_a846151a8fe4e5f027b79e372806286e0}{Acceleration}} (float curr\+Speed, float maxS, float minS, float num\+To\+Slow, float accel\+Rate)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} $>$ \mbox{\hyperlink{class_car_abe2014b0aa931bde362cb481ecafb602}{Node\+Path}}
+\item 
+\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} \mbox{\hyperlink{class_car_a5df17d73e055750607c8323992c4abd3}{curr\+Pos}}
+\item 
+\mbox{\Hypertarget{class_car_a6c8c9c0b6fbf08ae87fd312544d4312a}\label{class_car_a6c8c9c0b6fbf08ae87fd312544d4312a}} 
+\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} {\bfseries old\+Pos}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to represent Cars in intersection. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_car_aa96eb44b0f5443ac980260abd8b89f33}\label{class_car_aa96eb44b0f5443ac980260abd8b89f33}} 
+\index{Car@{Car}!\_Process@{\_Process}}
+\index{\_Process@{\_Process}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{\_Process()}{\_Process()}}
+{\footnotesize\ttfamily override void Car.\+\_\+\+Process (\begin{DoxyParamCaption}\item[{float}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Required by Godot engine, runs on every frame. \mbox{\Hypertarget{class_car_a846151a8fe4e5f027b79e372806286e0}\label{class_car_a846151a8fe4e5f027b79e372806286e0}} 
+\index{Car@{Car}!Acceleration@{Acceleration}}
+\index{Acceleration@{Acceleration}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{Acceleration()}{Acceleration()}}
+{\footnotesize\ttfamily float Car.\+Acceleration (\begin{DoxyParamCaption}\item[{float}]{curr\+Speed,  }\item[{float}]{maxS,  }\item[{float}]{minS,  }\item[{float}]{num\+To\+Slow,  }\item[{float}]{accel\+Rate }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to determine acceleration of car given the current speed, max and min speeds, number of nearby cars to start slowing down, and acceleration rate. \mbox{\Hypertarget{class_car_a99efaf6bd4b1d4283d3fb4609e7011b7}\label{class_car_a99efaf6bd4b1d4283d3fb4609e7011b7}} 
+\index{Car@{Car}!GenerateDirections@{GenerateDirections}}
+\index{GenerateDirections@{GenerateDirections}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{GenerateDirections()}{GenerateDirections()}}
+{\footnotesize\ttfamily List$<$ Vector2 $>$ Car.\+Generate\+Directions (\begin{DoxyParamCaption}\item[{Vector2}]{p0,  }\item[{Vector2}]{p1,  }\item[{Vector2}]{p2,  }\item[{float}]{tstep }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Generates a list of points so cars can go along a curve \mbox{\Hypertarget{class_car_ade4fe4eabf2dc4f9d7493abef5fa81e1}\label{class_car_ade4fe4eabf2dc4f9d7493abef5fa81e1}} 
+\index{Car@{Car}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void Car.\+Initialize (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} $>$}]{n,  }\item[{\mbox{\hyperlink{class_simulation}{Simulation}}}]{s,  }\item[{bool}]{running\+Monte\+Carlo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to intialize car with directions, the parent simulation, and a boolean determining whether it is the Monte Carlo simulation. \mbox{\Hypertarget{class_car_a6522f7e2b3b6d989ea2a9d77b977592b}\label{class_car_a6522f7e2b3b6d989ea2a9d77b977592b}} 
+\index{Car@{Car}!MoveCellular@{MoveCellular}}
+\index{MoveCellular@{MoveCellular}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{MoveCellular()}{MoveCellular()}}
+{\footnotesize\ttfamily void Car.\+Move\+Cellular (\begin{DoxyParamCaption}\item[{float}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to determine movement of car in Cellular Automata simulation. \mbox{\Hypertarget{class_car_a49373911337b498e937aa9b4c7c53e6c}\label{class_car_a49373911337b498e937aa9b4c7c53e6c}} 
+\index{Car@{Car}!MoveMonteCarlo@{MoveMonteCarlo}}
+\index{MoveMonteCarlo@{MoveMonteCarlo}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{MoveMonteCarlo()}{MoveMonteCarlo()}}
+{\footnotesize\ttfamily void Car.\+Move\+Monte\+Carlo (\begin{DoxyParamCaption}\item[{float}]{delta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Function to determine the movement of the car in the Monte Carlo simulation. \mbox{\Hypertarget{class_car_a508ae2e76c1d9a75fe433ca4c65e2c52}\label{class_car_a508ae2e76c1d9a75fe433ca4c65e2c52}} 
+\index{Car@{Car}!StartNextCheckpoint@{StartNextCheckpoint}}
+\index{StartNextCheckpoint@{StartNextCheckpoint}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{StartNextCheckpoint()}{StartNextCheckpoint()}}
+{\footnotesize\ttfamily void Car.\+Start\+Next\+Checkpoint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to advance the car to the next node 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_car_a5df17d73e055750607c8323992c4abd3}\label{class_car_a5df17d73e055750607c8323992c4abd3}} 
+\index{Car@{Car}!currPos@{currPos}}
+\index{currPos@{currPos}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{currPos}{currPos}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}} Car.\+curr\+Pos}
+
+Variables to hold which node the car is coming from and going to \mbox{\Hypertarget{class_car_abe2014b0aa931bde362cb481ecafb602}\label{class_car_abe2014b0aa931bde362cb481ecafb602}} 
+\index{Car@{Car}!NodePath@{NodePath}}
+\index{NodePath@{NodePath}!Car@{Car}}
+\doxysubsubsection{\texorpdfstring{NodePath}{NodePath}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Implementations.\+Sim\+Node}}$>$ Car.\+Node\+Path}
+
+List of directions for car to follow 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Simulation\+Scripts/Car.\+cs\end{DoxyCompactItemize}

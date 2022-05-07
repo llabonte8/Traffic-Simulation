@@ -1,3 +1,5 @@
+# Script on an IntersectionNode that handles drawing and adding inputs/outputs
+
 extends Sprite
 
 onready var ControlNode = load("res://Scripts/ControlNode.gd")
@@ -27,7 +29,7 @@ func _init(position, scalingFactor, creator, highlightedTexture, unhighlightedTe
 	
 func getPos(): return global_position
 
-	
+# Helper functions, self explanatory 
 func addOutputNode(n):
 	outputNodes.append(n)
 	
@@ -45,6 +47,8 @@ func deselect():
 func select():
 	self.texture = htex
 	
+
+# Helper function to calculate the points along a bezier curve, given the start position, middle, end, and size of each step
 func getBezierPoints(p0, p1, p2, tstep):
 	var points = PoolVector2Array()
 	var t = 0
@@ -57,6 +61,7 @@ func getBezierPoints(p0, p1, p2, tstep):
 		
 	return points
 	
+# Delete the current node. Updates all nodes in its input/output list.
 func delete():
 	for o in outputNodes:
 		if not o: continue
@@ -80,10 +85,12 @@ func removeOutputNode(n):
 	
 func _draw():
 
+	# Clear current cache of lines
 	for l in lines:
 		l.queue_free()
 	lines.clear()
 
+	# For each output node, draw a bezier curve to that node's position
 	for n in outputNodes:
 		var ctrlPoint = ICreator.getControlPosition([self, n])
 		if ctrlPoint:

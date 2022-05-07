@@ -1,3 +1,5 @@
+# Script to handle the save intersection dialogue box
+
 extends LineEdit
 
 var parent

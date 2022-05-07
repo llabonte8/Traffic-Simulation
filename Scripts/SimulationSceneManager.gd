@@ -1,31 +1,86 @@
+# Scene manager for simulation mode
+
 extends Node2D
 
-func _ready():
-	connect("item_activated", self, "_on_item_activated")
+onready var FileList = load('res://Scripts/fileViewer.gd')
+onready var CarSprite = load('res://Images/car.png')
 
-onready var list : ItemList = get_node("CanvasLayer/ItemList") 
+var CurrentNodeMap = {}
+var Sim = null
+
+var speed = 10
+var cpt = 0.2
 
 func _input(event):
 
 	if event is InputEventKey and event.is_pressed():
+		# Handle scene switching
 		if event.scancode == KEY_B:
-			if not get_tree().change_scene("res://Main.tscn"): print("Error switching scenes")
+			if not get_tree().change_scene("res://Builder.tscn"): print("Error switching scenes")
+		#Handle loading intersections
 		elif event.scancode == KEY_L:
-			list.clear()
-			loadFiles(list, "res://IntersectionJSONs/")
-			
-func _on_item_activated(index):
-	print(list.get_item_at_position(index))
+			var s = get_node("Simulation")
+			if s.RUNNING: s.Stop();
+			for elem in CurrentNodeMap:
+				CurrentNodeMap[elem].queue_free()
 
-func loadFiles(itemlist, filepath):
-	var dir = Directory.new()
-	dir.open(filepath)
-	dir.list_dir_begin()
-	
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif not file.begins_with('.'):
-			itemlist.add_item(file.replace('.json', ""))
-	dir.list_dir_end()
+			var filelist = FileList.new(self)
+			get_node("CanvasLayer").add_child(filelist)
+
+		elif event.scancode == KEY_P:
+			var sim = get_node('Simulation')
+
+			if sim.RUNNING == false:
+				sim.Initialize(self, CarSprite)
+				
+				for elem in CurrentNodeMap:
+					sim.AddNode(CurrentNodeMap[elem].position, CurrentNodeMap[elem].SystemInputNode, CurrentNodeMap[elem].SystemOutputNode)
+
+				for elem in CurrentNodeMap:
+					for c in CurrentNodeMap[elem].outputNodesAndMidpoints:
+						sim.AddConnections(CurrentNodeMap[elem].position, c[0].position, c[1])
+				
+				sim.SetTPS(speed)
+				sim.Start();
+
+			else: 
+				sim.Stop();
+
+		elif event.scancode == KEY_PERIOD:
+			cpt = min(1, cpt + 0.05)
+			if(get_node('Simulation').RUNNING):
+				get_node("Simulation").SetCPT(cpt)
+
+		elif event.scancode == KEY_COMMA:
+			cpt = max(0, cpt - 0.05)
+			if(get_node('Simulation').RUNNING):
+				get_node("Simulation").SetCPT(cpt)
+
+		elif event.scancode == KEY_EQUAL:
+			speed = min(60, speed + 5)
+			if(get_node('Simulation').RUNNING):
+				get_node("Simulation").SetTPS(speed)
+
+		elif event.scancode == KEY_MINUS:
+			speed = max(0, speed - 5)
+			if(get_node('Simulation').RUNNING):
+				get_node("Simulation").SetTPS(speed)
+
+		elif event.scancode == KEY_S:
+			if(get_node('Simulation').RUNNING):		
+				get_node('Simulation').Switch()
+
+			
+
+#Helper function to set the CurrentNodeMap to a new intersection map, and instantiate new intersection nodes
+func loadNodeMap(map):
+	CurrentNodeMap = map
+	for elem in map:
+		add_child(map[elem])
+
+
+func updateNodeColor(pos, t):
+	for elem in CurrentNodeMap:
+		if elem == pos:
+			CurrentNodeMap[elem].updateColor(t)
+			return;

@@ -1,0 +1,95 @@
+\hypertarget{class_sim_implementations_1_1_sim_node}{}\doxysection{Sim\+Implementations.\+Sim\+Node Class Reference}
+\label{class_sim_implementations_1_1_sim_node}\index{SimImplementations.SimNode@{SimImplementations.SimNode}}
+
+
+Class to represent nodes in the intersection.  
+
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sim_implementations_1_1_sim_node_a96d8fb51280cbcb142ab8e8eeb12d56e}{Sim\+Node}} (Vector2 pos, bool input, bool output)
+\item 
+Vector2 \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_ad0f079c0ab9a7795d6fc0cd8d485bb10}{get\+Center}} (\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}} n)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_aa3098ac525a68411cf8d1a0fabe9d213}{Input}} = false
+\item 
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_a4da18a6a7d2a2294f31937aa9e69bd99}\label{class_sim_implementations_1_1_sim_node_a4da18a6a7d2a2294f31937aa9e69bd99}} 
+bool {\bfseries Output} = false
+\item 
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_ad15ed575528268383a6768d29cd729e0}\label{class_sim_implementations_1_1_sim_node_ad15ed575528268383a6768d29cd729e0}} 
+bool {\bfseries visited} = false
+\item 
+int \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_a321338308c8458d0d1529179e4ec075b}{Cooldown\+Time}} = 3
+\item 
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_ad643bba0355f8229232cd43d36378b23}\label{class_sim_implementations_1_1_sim_node_ad643bba0355f8229232cd43d36378b23}} 
+int {\bfseries curr\+Cooldown} = 0
+\item 
+Vector2 \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_ad07eb3a75cb65145cf6a14ac4a46bf67}{position}}
+\item 
+List$<$ \mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}} $>$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_aff4c1fe9e121de6815109fd8eead5cbc}{connections}} = new List$<$\mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}}$>$()
+\item 
+List$<$ \mbox{\hyperlink{class_car}{Car}} $>$ \mbox{\hyperlink{class_sim_implementations_1_1_sim_node_ae48a6ae679a3253cac5140911aabd4e6}{queue}} = new List$<$\mbox{\hyperlink{class_car}{Car}}$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class to represent nodes in the intersection. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_a96d8fb51280cbcb142ab8e8eeb12d56e}\label{class_sim_implementations_1_1_sim_node_a96d8fb51280cbcb142ab8e8eeb12d56e}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!SimNode@{SimNode}}
+\index{SimNode@{SimNode}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{SimNode()}{SimNode()}}
+{\footnotesize\ttfamily Sim\+Implementations.\+Sim\+Node.\+Sim\+Node (\begin{DoxyParamCaption}\item[{Vector2}]{pos,  }\item[{bool}]{input,  }\item[{bool}]{output }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor for \mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}} class, taking the position and booleans determining whether it is an input. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_ad0f079c0ab9a7795d6fc0cd8d485bb10}\label{class_sim_implementations_1_1_sim_node_ad0f079c0ab9a7795d6fc0cd8d485bb10}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!getCenter@{getCenter}}
+\index{getCenter@{getCenter}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{getCenter()}{getCenter()}}
+{\footnotesize\ttfamily Vector2 Sim\+Implementations.\+Sim\+Node.\+get\+Center (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_sim_implementations_1_1_sim_node}{Sim\+Node}}}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Helper function to get the position between this node and a connected node. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_aff4c1fe9e121de6815109fd8eead5cbc}\label{class_sim_implementations_1_1_sim_node_aff4c1fe9e121de6815109fd8eead5cbc}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!connections@{connections}}
+\index{connections@{connections}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{connections}{connections}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}}$>$ Sim\+Implementations.\+Sim\+Node.\+connections = new List$<$\mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}}$>$()}
+
+List of \mbox{\hyperlink{class_sim_implementations_1_1_connection}{Connection}} instances pointing to other nodes. \mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_a321338308c8458d0d1529179e4ec075b}\label{class_sim_implementations_1_1_sim_node_a321338308c8458d0d1529179e4ec075b}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!CooldownTime@{CooldownTime}}
+\index{CooldownTime@{CooldownTime}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{CooldownTime}{CooldownTime}}
+{\footnotesize\ttfamily int Sim\+Implementations.\+Sim\+Node.\+Cooldown\+Time = 3}
+
+Integers to hold the cooldown time, which controls how often cars can go through the node. \mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_aa3098ac525a68411cf8d1a0fabe9d213}\label{class_sim_implementations_1_1_sim_node_aa3098ac525a68411cf8d1a0fabe9d213}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!Input@{Input}}
+\index{Input@{Input}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{Input}{Input}}
+{\footnotesize\ttfamily bool Sim\+Implementations.\+Sim\+Node.\+Input = false}
+
+Booleans to help with graph taversal. \mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_ad07eb3a75cb65145cf6a14ac4a46bf67}\label{class_sim_implementations_1_1_sim_node_ad07eb3a75cb65145cf6a14ac4a46bf67}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!position@{position}}
+\index{position@{position}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily Vector2 Sim\+Implementations.\+Sim\+Node.\+position}
+
+2D position of the node. \mbox{\Hypertarget{class_sim_implementations_1_1_sim_node_ae48a6ae679a3253cac5140911aabd4e6}\label{class_sim_implementations_1_1_sim_node_ae48a6ae679a3253cac5140911aabd4e6}} 
+\index{SimImplementations.SimNode@{SimImplementations.SimNode}!queue@{queue}}
+\index{queue@{queue}!SimImplementations.SimNode@{SimImplementations.SimNode}}
+\doxysubsubsection{\texorpdfstring{queue}{queue}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_car}{Car}}$>$ Sim\+Implementations.\+Sim\+Node.\+queue = new List$<$\mbox{\hyperlink{class_car}{Car}}$>$()}
+
+Queue to hold cars that are currently in this node. Used for Cellular Automata \textquotesingle{}vision\textquotesingle{}. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Simulation\+Scripts/\mbox{\hyperlink{_sim_implementations_8cs}{Sim\+Implementations.\+cs}}\end{DoxyCompactItemize}

@@ -1,3 +1,6 @@
+# Helper class to hold control nodes as a single element in a dictionary.
+# Necessary because positions are held in a spacial hashmap, and control nodes can overlap
+
 extends Node
 
 var nodes = {}

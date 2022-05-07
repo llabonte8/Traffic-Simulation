@@ -1,3 +1,5 @@
+# Script to handle the midpoints of lines between intersection nodes
+
 extends Sprite
 
 
